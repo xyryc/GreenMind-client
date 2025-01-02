@@ -49,10 +49,9 @@ const AddPlant = () => {
 
     // save plant in db
     try {
-      // post req
       const { data } = await axiosSecure.post(`/plants`, plantData);
       console.log(data);
-      toast.success("Data added successfully!");
+      toast.success("Data added successfully!"); 
     } catch (err) {
       console.log(err);
     } finally {

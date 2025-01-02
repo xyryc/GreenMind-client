@@ -133,8 +133,12 @@ const AddPlantForm = ({
   );
 };
 
-export default AddPlantForm;
-
 AddPlantForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
+  uploadButtonText: PropTypes.oneOfType([PropTypes.string, PropTypes.object])
+    .isRequired,
+  setUploadButtonText: PropTypes.func.isRequired,
+  loading: PropTypes.bool.isRequired,
 };
+
+export default AddPlantForm;
