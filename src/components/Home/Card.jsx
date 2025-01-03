@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 const Card = ({ plant }) => {
-  const { category, description, image, name, price, quantity, _id } =
-    plant || {};
+  const { category, image, name, price, quantity, _id } = plant || {};
 
   return (
     <Link
-      to={`/plant/1`}
+      to={`/plant/${_id}`}
       className="col-span-1 cursor-pointer group shadow-xl p-3 rounded-xl"
     >
       <div className="flex flex-col gap-2 w-full">
@@ -36,3 +36,14 @@ const Card = ({ plant }) => {
 };
 
 export default Card;
+
+Card.propTypes = {
+  plant: PropTypes.shape({
+    category: PropTypes.string,
+    image: PropTypes.string,
+    name: PropTypes.string,
+    price: PropTypes.number,
+    quantity: PropTypes.number,
+    _id: PropTypes.string,
+  }).isRequired,
+};

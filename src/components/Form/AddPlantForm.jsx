@@ -3,8 +3,8 @@ import { TbFidgetSpinner } from "react-icons/tb";
 
 const AddPlantForm = ({
   handleSubmit,
-  uploadButtonText,
-  setUploadButtonText,
+  uploadImage,
+  setUploadImage,
   loading,
 }) => {
   return (
@@ -90,12 +90,12 @@ const AddPlantForm = ({
               </div>
             </div>
             {/* Image */}
-            <div className=" p-4  w-full  m-auto rounded-lg flex-grow">
+            <div className="p-4 w-full m-auto rounded-lg flex-grow">
               <div className="file_upload px-5 py-3 relative border-4 border-dotted border-gray-300 rounded-lg">
                 <div className="flex flex-col w-max mx-auto text-center">
                   <label>
                     <input
-                      onChange={(e) => setUploadButtonText(e.target.files[0])}
+                      onChange={(e) => setUploadImage(e.target.files[0])}
                       className="text-sm cursor-pointer w-36 hidden"
                       type="file"
                       name="image"
@@ -104,15 +104,24 @@ const AddPlantForm = ({
                       hidden
                     />
                     <div className="bg-lime-500 text-white border border-gray-300 rounded font-semibold cursor-pointer p-1 px-3 hover:bg-lime-500">
-                      {uploadButtonText.name}
+                      {uploadImage?.name}
                     </div>
                   </label>
                 </div>
               </div>
             </div>
 
-            {uploadButtonText.size && (
-              <p>Image Size: {uploadButtonText.size / 1024} KB</p>
+            {uploadImage && uploadImage?.size && (
+              <div className="flex justify-center items-center gap-4">
+                <img
+                  src={URL.createObjectURL(uploadImage)}
+                  alt="uploaded image"
+                  className="w-20 h-20 object-cover rounded-md"
+                />
+                <p>
+                  Image Size: {(uploadImage.size / (1024 * 1024)).toFixed(2)} MB
+                </p>
+              </div>
             )}
 
             {/* Submit Button */}
@@ -135,10 +144,9 @@ const AddPlantForm = ({
 
 AddPlantForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
-  uploadButtonText: PropTypes.oneOfType([PropTypes.string, PropTypes.object])
-    .isRequired,
-  setUploadButtonText: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired,
+  uploadImage: PropTypes.object.isRequired,
+  setUploadImage: PropTypes.func.isRequired,
 };
 
 export default AddPlantForm;

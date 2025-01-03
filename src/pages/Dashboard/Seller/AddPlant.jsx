@@ -9,7 +9,7 @@ import { toast } from "react-hot-toast";
 const AddPlant = () => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
-  const [uploadButtonText, setUploadButtonText] = useState({
+  const [uploadImage, setUploadImage] = useState({
     name: "Upload Image",
   });
   const [loading, setLoading] = useState(false);
@@ -51,7 +51,7 @@ const AddPlant = () => {
     try {
       const { data } = await axiosSecure.post(`/plants`, plantData);
       console.log(data);
-      toast.success("Data added successfully!"); 
+      toast.success("Data added successfully!");
     } catch (err) {
       console.log(err);
     } finally {
@@ -68,8 +68,8 @@ const AddPlant = () => {
       {/* Form */}
       <AddPlantForm
         handleSubmit={handleSubmit}
-        uploadButtonText={uploadButtonText}
-        setUploadButtonText={setUploadButtonText}
+        uploadImage={uploadImage}
+        setUploadImage={setUploadImage}
         loading={loading}
       />
     </div>
