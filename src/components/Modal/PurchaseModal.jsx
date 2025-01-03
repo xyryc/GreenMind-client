@@ -12,7 +12,7 @@ import useAuth from "../../hooks/useAuth";
 import { toast } from "react-hot-toast";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 
-const PurchaseModal = ({ closeModal, isOpen, plant }) => {
+const PurchaseModal = ({ closeModal, isOpen, plant, refetch }) => {
   const { category, name, price, quantity, _id, seller } = plant;
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
@@ -62,7 +62,8 @@ const PurchaseModal = ({ closeModal, isOpen, plant }) => {
       toast.success("Order successful!");
 
       // decrease quantity from plants collection
-      
+      await axiosSecure.patch(`/plants/quantity/${_id}`, {quantityToUpdate: totalQuantity})
+      refetch()
     } catch (error) {
       console.log(error);
     } finally {
