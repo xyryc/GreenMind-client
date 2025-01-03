@@ -33,9 +33,7 @@ const PlantDetails = () => {
 
   if (isLoading) return <LoadingSpinner />;
 
-  console.log(plant);
-  const { category, description, image, name, price, quantity, _id, seller } =
-    plant;
+  const { category, description, image, name, price, quantity, seller } = plant;
 
   return (
     <Container>
@@ -55,25 +53,13 @@ const PlantDetails = () => {
           {/* Plant Info */}
           <Heading title={name} subtitle={`Category: ${category}`} />
           <hr className="my-6" />
-          <div
-            className="
-          text-lg font-light text-neutral-500"
-          >
+          <div className="text-lg font-light text-neutral-500">
             {description}
           </div>
           <hr className="my-6" />
 
-          <div
-            className="
-                text-xl 
-                font-semibold 
-                flex 
-                flex-row 
-                items-center
-                gap-2
-              "
-          >
-            <div>Seller: {seller.name}</div>
+          <div className="text-xl font-semibold flex flex-row items-centergap-2">
+            <div>Seller: {seller?.name}</div>
 
             <img
               className="rounded-full"
@@ -81,18 +67,12 @@ const PlantDetails = () => {
               width="30"
               alt="Avatar"
               referrerPolicy="no-referrer"
-              src={seller.image}
+              src={seller?.image}
             />
           </div>
           <hr className="my-6" />
           <div>
-            <p
-              className="
-                gap-4 
-                font-light
-                text-neutral-500
-              "
-            >
+            <p className="gap-4 font-lighttext-neutral-500">
               Quantity: {quantity} Units Left Only!
             </p>
           </div>
@@ -100,12 +80,19 @@ const PlantDetails = () => {
           <div className="flex justify-between">
             <p className="font-bold text-3xl text-gray-500">Price: ${price}</p>
             <div>
-              <Button label="Purchase" />
+              <Button
+                onClick={() => setIsOpen(true)}
+                label={`${quantity > 0 ? "Purchase" : "Out Of Stock"}`}
+              />
             </div>
           </div>
           <hr className="my-6" />
 
-          <PurchaseModal closeModal={closeModal} isOpen={isOpen} />
+          <PurchaseModal
+            plant={plant}
+            closeModal={closeModal}
+            isOpen={isOpen}
+          />
         </div>
       </div>
     </Container>
