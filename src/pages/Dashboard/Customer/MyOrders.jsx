@@ -9,7 +9,11 @@ const MyOrders = () => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
 
-  const { data: orders = [], isLoading } = useQuery({
+  const {
+    data: orders = [],
+    isLoading,
+    refetch,
+  } = useQuery({
     queryKey: ["orders", user?.email],
     queryFn: async () => {
       const { data } = await axiosSecure(`/customer-orders/${user?.email}`);
@@ -18,8 +22,6 @@ const MyOrders = () => {
   });
 
   if (isLoading) return <LoadingSpinner />;
-
-  console.log(orders);
 
   return (
     <>
@@ -81,7 +83,11 @@ const MyOrders = () => {
 
                 <tbody>
                   {orders?.map((order) => (
-                    <CustomerOrderDataRow key={order._id} order={order} />
+                    <CustomerOrderDataRow
+                      key={order._id}
+                      order={order}
+                      refetch={refetch}
+                    />
                   ))}
                 </tbody>
               </table>
