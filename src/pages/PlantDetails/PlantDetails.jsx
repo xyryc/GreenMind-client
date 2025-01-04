@@ -18,7 +18,7 @@ const PlantDetails = () => {
   };
 
   const {
-    data: plant = [],
+    data: plant = {},
     isLoading,
     refetch,
   } = useQuery({
