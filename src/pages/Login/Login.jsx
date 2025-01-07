@@ -11,8 +11,10 @@ const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const from = location?.state?.from?.pathname || "/";
+
   if (user) return <Navigate to={from} replace={true} />;
   if (loading) return <LoadingSpinner />;
+
   // form submit handler
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -22,7 +24,10 @@ const Login = () => {
 
     try {
       //User Login
-      await signIn(email, password);
+      const data = await signIn(email, password);
+
+      // save user info in db if user is new
+      await saveUser(data?.user);
 
       navigate(from, { replace: true });
       toast.success("Login Successful");

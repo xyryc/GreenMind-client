@@ -6,6 +6,7 @@ const AdminMenu = () => {
   return (
     <>
       <MenuItem icon={BsGraphUp} label="Statistics" address="/dashboard" />
+
       <MenuItem icon={FaUserCog} label="Manage Users" address="manage-users" />
     </>
   );
