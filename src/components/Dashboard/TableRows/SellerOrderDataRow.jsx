@@ -12,7 +12,7 @@ const SellerOrderDataRow = ({ orderData, refetch }) => {
   const { name, customer, address, quantity, status, price, _id, plantId } =
     orderData || {};
 
-  // handle order delete/ cancellation
+  // handle order delete order
   const handleDelete = async () => {
     try {
       // delete req
@@ -32,6 +32,27 @@ const SellerOrderDataRow = ({ orderData, refetch }) => {
       toast.error(error.response.data);
     } finally {
       closeModal();
+    }
+  };
+
+  // handle status change
+  const handleStatusChange = async (newStatus) => {
+    // if status is same, dont send req
+    if (status === newStatus) return;
+
+    // send status update req
+    try {
+      // update req
+      await axiosSecure.patch(`/orders/${_id}`, {
+        status: newStatus,
+      });
+
+      // call refetch for UI refresh
+      refetch();
+
+      toast.success("Status updated");
+    } catch (error) {
+      toast.error(error.response.data);
     }
   };
 
@@ -61,6 +82,8 @@ const SellerOrderDataRow = ({ orderData, refetch }) => {
           <select
             required
             defaultValue={status}
+            onChange={(e) => handleStatusChange(e.target.value)}
+            disabled={status === "Delivered"}
             className="p-1 border-2 border-lime-300 focus:outline-lime-500 rounded-md text-gray-900 whitespace-no-wrap bg-white"
             name="category"
           >
