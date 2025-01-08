@@ -7,7 +7,11 @@ import LoadingSpinner from "../../../components/Shared/LoadingSpinner";
 const MyInventory = () => {
   const axiosSecure = useAxiosSecure();
 
-  const { data: plants = [], isLoading } = useQuery({
+  const {
+    data: plants = [],
+    isLoading,
+    refetch,
+  } = useQuery({
     queryKey: ["plants"],
     queryFn: async () => {
       const { data } = await axiosSecure.get(`/seller-plants`);
@@ -77,7 +81,13 @@ const MyInventory = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  <PlantDataRow />
+                  {plants.map((plant) => (
+                    <PlantDataRow
+                      key={plant._id}
+                      refetch={refetch}
+                      plant={plant}
+                    />
+                  ))}
                 </tbody>
               </table>
             </div>
