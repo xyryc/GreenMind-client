@@ -62,9 +62,7 @@ const PlantDetails = () => {
             <div>Seller: {seller?.name}</div>
 
             <img
-              className="rounded-full"
-              height="30"
-              width="30"
+              className="rounded-full w-8 h-8 object-cover ml-2"
               alt="Avatar"
               referrerPolicy="no-referrer"
               src={seller?.image}
