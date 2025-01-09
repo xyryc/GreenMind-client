@@ -104,7 +104,7 @@ const AddPlantForm = ({
                       hidden
                     />
                     <div className="bg-lime-500 text-white border border-gray-300 rounded font-semibold cursor-pointer p-1 px-3 hover:bg-lime-500">
-                      {uploadImage?.name}
+                      {/* {uploadImage?.name} */}
                     </div>
                   </label>
                 </div>
