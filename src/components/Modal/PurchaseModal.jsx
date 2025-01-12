@@ -179,6 +179,7 @@ const PurchaseModal = ({ closeModal, isOpen, plant, refetch }) => {
                     closeModal={closeModal}
                     purchaseInfo={purchaseInfo}
                     refetch={refetch}
+                    totalQuantity={totalQuantity}
                   />
                 </Elements>
               </DialogPanel>
