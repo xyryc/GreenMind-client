@@ -8,9 +8,10 @@ import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
 const CheckoutForm = ({ closeModal, purchaseInfo, refetch, totalQuantity }) => {
-  const [clientSecret, setClientSecret] = useState("");
-  const axiosSecure = useAxiosSecure();
   const navigate = useNavigate();
+  const axiosSecure = useAxiosSecure();
+  const [clientSecret, setClientSecret] = useState("");
+  const [processing, setProcessing] = useState(false);
 
   useEffect(() => {
     getPaymentIntent();
@@ -32,6 +33,7 @@ const CheckoutForm = ({ closeModal, purchaseInfo, refetch, totalQuantity }) => {
   const elements = useElements();
 
   const handleSubmit = async (event) => {
+    setProcessing(true);
     // Block native form submission.
     event.preventDefault();
 
@@ -47,6 +49,7 @@ const CheckoutForm = ({ closeModal, purchaseInfo, refetch, totalQuantity }) => {
     const card = elements.getElement(CardElement);
 
     if (card == null) {
+      setProcessing(false);
       return;
     }
 
@@ -57,7 +60,8 @@ const CheckoutForm = ({ closeModal, purchaseInfo, refetch, totalQuantity }) => {
     });
 
     if (error) {
-      console.log("[error]", error);
+      setProcessing(false);
+      return console.log("[error]", error);
     } else {
       console.log("[PaymentMethod]", paymentMethod);
     }
@@ -81,18 +85,20 @@ const CheckoutForm = ({ closeModal, purchaseInfo, refetch, totalQuantity }) => {
           ...purchaseInfo,
           transactionId: paymentIntent?.id,
         });
-        toast.success("Order successful!");
 
         // decrease quantity from plants collection
         await axiosSecure.patch(`/plants/quantity/${purchaseInfo?.plantId}`, {
           quantityToUpdate: totalQuantity,
           status: "decrease",
         });
+
         refetch();
+        toast.success("Order successful!");
         navigate("/dashboard/my-orders");
       } catch (error) {
         console.log(error);
       } finally {
+        setProcessing(false);
         closeModal();
       }
     }
@@ -121,7 +127,7 @@ const CheckoutForm = ({ closeModal, purchaseInfo, refetch, totalQuantity }) => {
         <Button
           type="submit"
           label={`Pay $${purchaseInfo?.price}`}
-          disabled={!stripe}
+          disabled={!stripe || !clientSecret || processing}
         />
         <Button onClick={closeModal} label={"Cancel"} outline={true} />
       </div>

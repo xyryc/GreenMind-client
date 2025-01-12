@@ -9,8 +9,6 @@ import {
 import { Fragment, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import { toast } from "react-hot-toast";
-import useAxiosSecure from "../../hooks/useAxiosSecure";
-import { useNavigate } from "react-router-dom";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import CheckoutForm from "../Form/CheckoutForm";
@@ -18,10 +16,8 @@ import CheckoutForm from "../Form/CheckoutForm";
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
 
 const PurchaseModal = ({ closeModal, isOpen, plant, refetch }) => {
-  const navigate = useNavigate();
   const { category, name, price, quantity, _id, seller } = plant;
   const { user } = useAuth();
-  const axiosSecure = useAxiosSecure();
   const [totalQuantity, setTotalQuantity] = useState(1);
   const [totalPrice, setTotalPrice] = useState(price);
   const [purchaseInfo, setPurchaseInfo] = useState({
@@ -55,30 +51,6 @@ const PurchaseModal = ({ closeModal, isOpen, plant, refetch }) => {
     setPurchaseInfo((prev) => {
       return { ...prev, quantity: value, price: value * price };
     });
-  };
-
-  // Total Price Calculation
-  const handlePurchase = async () => {
-    console.log(purchaseInfo);
-
-    // post req to db
-    try {
-      // save order to db
-      await axiosSecure.post("/orders", purchaseInfo);
-      toast.success("Order successful!");
-
-      // decrease quantity from plants collection
-      await axiosSecure.patch(`/plants/quantity/${_id}`, {
-        quantityToUpdate: totalQuantity,
-        status: "decrease",
-      });
-      refetch();
-      navigate("/dashboard/my-orders");
-    } catch (error) {
-      console.log(error);
-    } finally {
-      closeModal();
-    }
   };
 
   return (
