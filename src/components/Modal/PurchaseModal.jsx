@@ -7,11 +7,15 @@ import {
   DialogTitle,
 } from "@headlessui/react";
 import { Fragment, useState } from "react";
-import Button from "../Shared/Button/Button";
 import useAuth from "../../hooks/useAuth";
 import { toast } from "react-hot-toast";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { useNavigate } from "react-router-dom";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+import CheckoutForm from "../Form/CheckoutForm";
+
+const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
 
 const PurchaseModal = ({ closeModal, isOpen, plant, refetch }) => {
   const navigate = useNavigate();
@@ -168,13 +172,15 @@ const PurchaseModal = ({ closeModal, isOpen, plant, refetch }) => {
                   />
                 </div>
 
-                {/* button */}
-                <div className="mt-3">
-                  <Button
-                    onClick={handlePurchase}
-                    label={`Pay $${totalPrice}`}
+                {/* checkout form */}
+                <Elements stripe={stripePromise}>
+                  {/* form component */}
+                  <CheckoutForm
+                    closeModal={closeModal}
+                    purchaseInfo={purchaseInfo}
+                    refetch={refetch}
                   />
-                </div>
+                </Elements>
               </DialogPanel>
             </TransitionChild>
           </div>
