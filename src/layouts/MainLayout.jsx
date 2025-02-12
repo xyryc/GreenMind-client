@@ -5,9 +5,11 @@ const MainLayout = () => {
   return (
     <div className="bg-white font-Poppins text-colorPrimary">
       <Navbar />
-      <div className="pt-24 min-h-[calc(100vh-68px)]">
+
+      <div className="py-24 min-h-[calc(100vh-68px)]">
         <Outlet />
       </div>
+
       <Footer />
     </div>
   );
