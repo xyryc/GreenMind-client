@@ -39,7 +39,7 @@ const BestSelling = () => {
             >
               <div className="h-[363px] w-full relative overflow-hidden rounded-xl">
                 <img
-                  className="w-full h-full object-cover group-hover:scale-105 transition duration-300 ease-in-out"
+                  className="w-full h-full object-cover group-hover:scale-105 transition duration-700 ease-in-out"
                   src={plants.image}
                   alt={plants.name}
                 />

@@ -10,7 +10,7 @@ const Home = () => {
   return (
     <div>
       <Helmet>
-        <title>GREENMIND</title>
+        <title>GreenMind</title>
       </Helmet>
 
       <div className="container mx-auto px-4 space-y-28">

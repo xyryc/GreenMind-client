@@ -14,7 +14,7 @@ const Button = ({
       disabled={disabled}
       onClick={onClick}
       className={`
-          relative
+          flex gap-2 items-center justify-center text-center
           disabled:opacity-70
           disabled:cursor-not-allowed
           rounded-lg
@@ -31,14 +31,7 @@ const Button = ({
         `}
     >
       {Icon && (
-        <Icon
-          size={24}
-          className="
-              absolute
-              left-4
-              top-3
-            "
-        />
+        <Icon size={16} className={`${disabled ? "animate-spin" : ""}`} />
       )}
       {label}
     </button>

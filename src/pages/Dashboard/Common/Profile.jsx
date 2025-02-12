@@ -2,12 +2,12 @@ import useAuth from "../../../hooks/useAuth";
 import { Helmet } from "react-helmet-async";
 import coverImg from "../../../assets/images/cover.jpg";
 import useRole from "../../../hooks/useRole";
-import LoadingSpinner from './../../../components/Shared/LoadingSpinner';
+import LoadingSpinner from "./../../../components/Shared/LoadingSpinner";
 const Profile = () => {
   const { user, loading } = useAuth();
   const [role, isLoading] = useRole();
 
-  if(loading, isLoading) return <LoadingSpinner/>
+  if ((loading, isLoading)) return <LoadingSpinner />;
 
   return (
     <div className="flex justify-center items-center h-screen">
@@ -29,7 +29,7 @@ const Profile = () => {
             />
           </a>
 
-          <p className="p-2 px-4 text-xs text-white bg-lime-500 rounded-full">
+          <p className="p-2 px-4 text-xs capitalize text-black bg-lightBlue rounded-full">
             {role}
           </p>
           <p className="mt-2 text-xl font-medium text-gray-800 ">
@@ -49,10 +49,10 @@ const Profile = () => {
               </p>
 
               <div>
-                <button className="bg-lime-500 px-10 py-1 rounded-lg text-black cursor-pointer hover:bg-lime-800 block mb-1">
+                <button className="bg-lightBlue px-10 py-1 rounded-lg text-black cursor-pointer  block mb-1">
                   Update Profile
                 </button>
-                <button className="bg-lime-500 px-7 py-1 rounded-lg text-black cursor-pointer hover:bg-lime-800">
+                <button className="bg-lightBlue px-7 py-1 rounded-lg text-black cursor-pointer ">
                   Change Password
                 </button>
               </div>

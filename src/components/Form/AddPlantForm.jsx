@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { TbFidgetSpinner } from "react-icons/tb";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 const AddPlantForm = ({
   handleSubmit,
@@ -18,7 +18,7 @@ const AddPlantForm = ({
                 Name
               </label>
               <input
-                className="w-full px-4 py-3 text-gray-800 border border-lime-300 focus:outline-lime-500 rounded-md bg-white"
+                className="w-full px-4 py-3 text-gray-800 border border-lightBlue focus:outline-lightBlue rounded-md bg-white"
                 name="name"
                 id="name"
                 type="text"
@@ -33,7 +33,7 @@ const AddPlantForm = ({
               </label>
               <select
                 required
-                className="w-full px-4 py-3 border-lime-300 focus:outline-lime-500 rounded-md bg-white"
+                className="w-full px-4 py-3 border-lightBlue focus:outline-lightBlue rounded-md bg-white"
                 name="category"
               >
                 <option value="Indoor">Indoor</option>
@@ -51,7 +51,7 @@ const AddPlantForm = ({
               <textarea
                 id="description"
                 placeholder="Write plant description here..."
-                className="block rounded-md focus:lime-300 w-full h-32 px-4 py-3 text-gray-800  border border-lime-300 bg-white focus:outline-lime-500 "
+                className="block rounded-md w-full h-32 px-4 py-3 text-gray-800  border border-lightBlue bg-white focus:outline-lightBlue"
                 name="description"
               ></textarea>
             </div>
@@ -65,7 +65,7 @@ const AddPlantForm = ({
                   Price
                 </label>
                 <input
-                  className="w-full px-4 py-3 text-gray-800 border border-lime-300 focus:outline-lime-500 rounded-md bg-white"
+                  className="w-full px-4 py-3 text-gray-800 border border-lightboutline-lightBlue focus:outline-lightBlue rounded-md bg-white"
                   name="price"
                   id="price"
                   type="number"
@@ -80,7 +80,7 @@ const AddPlantForm = ({
                   Quantity
                 </label>
                 <input
-                  className="w-full px-4 py-3 text-gray-800 border border-lime-300 focus:outline-lime-500 rounded-md bg-white"
+                  className="w-full px-4 py-3 text-gray-800 border border-lightBlue focus:outline-lightBlue rounded-md bg-white"
                   name="quantity"
                   id="quantity"
                   type="number"
@@ -103,8 +103,8 @@ const AddPlantForm = ({
                       accept="image/*"
                       hidden
                     />
-                    <div className="bg-lime-500 text-white border border-gray-300 rounded font-semibold cursor-pointer p-1 px-3 hover:bg-lime-500">
-                      {/* {uploadImage?.name} */}
+                    <div className="bg-lightBlue text-black rounded cursor-pointer p-1 px-3">
+                      {uploadImage?.name}
                     </div>
                   </label>
                 </div>
@@ -127,13 +127,12 @@ const AddPlantForm = ({
             {/* Submit Button */}
             <button
               type="submit"
-              className="w-full p-3 mt-5 text-center font-medium text-white transition duration-200 rounded shadow-md bg-lime-500 "
+              className=" flex gap-2 items-center justify-center py-2.5 text-center font-medium text-black transition duration-200 rounded shadow-md bg-lightBlue"
             >
-              {loading ? (
-                <TbFidgetSpinner className="animate-spin m-auto" />
-              ) : (
-                "Save & Continue"
-              )}
+              <AiOutlineLoading3Quarters
+                className={loading ? "animate-spin" : "hidden"}
+              />
+              {loading ? "Saving..." : "Save & Continue"}
             </button>
           </div>
         </div>

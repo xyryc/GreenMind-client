@@ -15,7 +15,9 @@ const Navbar = () => {
         <Container>
           <div className="flex flex-row items-center justify-between gap-3 md:gap-0">
             {/* Logo */}
-            <Link className="text-2xl font-Quella">GREENMIND</Link>
+            <Link to="/" className="text-2xl font-Quella">
+              GREENMIND
+            </Link>
 
             {/* Dropdown Menu */}
             <div className="relative">
@@ -45,6 +47,13 @@ const Navbar = () => {
                       className="block md:hidden px-4 py-3 hover:bg-neutral-100 transition font-semibold"
                     >
                       Home
+                    </Link>
+
+                    <Link
+                      to="/plants"
+                      className="block px-4 py-3 hover:bg-neutral-100 transition font-semibold"
+                    >
+                      Plants
                     </Link>
 
                     {user ? (

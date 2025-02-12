@@ -2,8 +2,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import useAuth from "../../hooks/useAuth";
 import { toast } from "react-hot-toast";
-import { TbFidgetSpinner } from "react-icons/tb";
 import { imageUpload, saveUser } from "../../api/utils";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 const SignUp = () => {
   const {
@@ -63,7 +63,7 @@ const SignUp = () => {
     }
   };
   return (
-    <div className="flex justify-center items-center min-h-screen bg-white">
+    <div className="flex justify-center items-center min-h-screen bg-white font-Poppins">
       <div className="flex flex-col max-w-md p-6 rounded-md sm:p-10 bg-gray-100 text-gray-900">
         <div className="mb-8 text-center">
           <h1 className="my-3 text-4xl font-bold">Sign Up</h1>
@@ -85,7 +85,7 @@ const SignUp = () => {
                 name="name"
                 id="name"
                 placeholder="Enter Your Name Here"
-                className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-lime-500 bg-gray-200 text-gray-900"
+                className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-lightBlue bg-gray-200 text-gray-900"
                 data-temp-mail-org="0"
               />
             </div>
@@ -111,7 +111,7 @@ const SignUp = () => {
                 id="email"
                 required
                 placeholder="Enter Your Email Here"
-                className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-lime-500 bg-gray-200 text-gray-900"
+                className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-lightBlue bg-gray-200 text-gray-900"
                 data-temp-mail-org="0"
               />
             </div>
@@ -128,7 +128,7 @@ const SignUp = () => {
                 id="password"
                 required
                 placeholder="*******"
-                className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-lime-500 bg-gray-200 text-gray-900"
+                className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-lightBlue bg-gray-200 text-gray-900"
               />
             </div>
           </div>
@@ -136,10 +136,11 @@ const SignUp = () => {
           <div>
             <button
               type="submit"
-              className="bg-lime-500 w-full rounded-md py-3 text-white"
+              className="bg-lightBlue w-full rounded-md py-3 text-black"
+              disabled={loading}
             >
               {loading ? (
-                <TbFidgetSpinner className="animate-spin m-auto" />
+                <AiOutlineLoading3Quarters className="animate-spin m-auto" />
               ) : (
                 "Continue"
               )}
@@ -158,14 +159,13 @@ const SignUp = () => {
           className="flex justify-center items-center space-x-2 border m-3 p-2 border-gray-300 border-rounded cursor-pointer"
         >
           <FcGoogle size={32} />
-
           <p>Continue with Google</p>
         </div>
         <p className="px-6 text-sm text-center text-gray-400">
           Already have an account?{" "}
           <Link
             to="/login"
-            className="hover:underline hover:text-lime-500 text-gray-600"
+            className="hover:underline hover:text-lightBlue text-gray-600"
           >
             Login
           </Link>

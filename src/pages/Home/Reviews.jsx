@@ -28,7 +28,7 @@ const Reviews = () => {
                 alt=""
               />
               <img
-                className="absolute bottom-0 left-[13px]"
+                className="absolute bottom-0 left-[13px] h-[150px]"
                 src="/reviewer-3.png"
                 alt=""
               />
@@ -60,7 +60,7 @@ const Reviews = () => {
                 alt=""
               />
               <img
-                className="absolute bottom-0 left-[13px]"
+                className="absolute bottom-0 left-[13px] h-[150px]"
                 src="/reviewer-4.png"
                 alt=""
               />

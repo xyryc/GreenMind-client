@@ -7,11 +7,11 @@ import useAxiosSecure from "../../hooks/useAxiosSecure";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 const CheckoutForm = ({ closeModal, purchaseInfo, refetch, totalQuantity }) => {
   const navigate = useNavigate();
   const axiosSecure = useAxiosSecure();
-
   const [processing, setProcessing] = useState(false);
 
   const { data: clientSecret = "" } = useQuery({
@@ -52,6 +52,7 @@ const CheckoutForm = ({ closeModal, purchaseInfo, refetch, totalQuantity }) => {
     }
 
     // Use your card Element with other Stripe.js APIs
+    // eslint-disable-next-line no-unused-vars
     const { error, paymentMethod } = await stripe.createPaymentMethod({
       type: "card",
       card,
@@ -61,7 +62,7 @@ const CheckoutForm = ({ closeModal, purchaseInfo, refetch, totalQuantity }) => {
       setProcessing(false);
       return console.log("[error]", error);
     } else {
-      console.log("[PaymentMethod]", paymentMethod);
+      // console.log("[PaymentMethod]", paymentMethod);
     }
 
     // confirm payment
@@ -93,7 +94,9 @@ const CheckoutForm = ({ closeModal, purchaseInfo, refetch, totalQuantity }) => {
         refetch();
         toast.success("Order successful!");
         navigate("/dashboard/my-orders");
+        setProcessing(false);
       } catch (error) {
+        setProcessing(false);
         console.log(error);
       } finally {
         setProcessing(false);
@@ -125,10 +128,17 @@ const CheckoutForm = ({ closeModal, purchaseInfo, refetch, totalQuantity }) => {
       <div className="flex justify-around mt-2 gap-2">
         <Button
           type="submit"
-          label={`Pay $${purchaseInfo?.price}`}
+          label={processing ? "Processing..." : `Pay $${purchaseInfo?.price}`}
           disabled={!stripe || !clientSecret || processing}
+          icon={processing ? AiOutlineLoading3Quarters : null}
         />
-        <Button onClick={closeModal} label={"Cancel"} outline={true} />
+
+        <Button
+          onClick={closeModal}
+          label={"Cancel"}
+          outline={true}
+          disabled={processing}
+        />
       </div>
     </form>
   );

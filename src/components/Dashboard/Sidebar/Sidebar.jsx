@@ -28,7 +28,7 @@ const Sidebar = () => {
         <div>
           <div className="block cursor-pointer p-4 font-bold">
             <Link className="text-2xl text-colorPrimary font-Quella">
-              GREENMIND
+              GreenMind
             </Link>
           </div>
         </div>
@@ -51,7 +51,7 @@ const Sidebar = () => {
           <div>
             <div className="w-full hidden md:flex px-4 py-2 shadow-lg rounded-lg justify-center items-center bg-gray-200 mx-auto">
               <Link to="/" className="text-2xl text-colorPrimary font-Quella">
-                GREENMIND
+                GreenMind
               </Link>
             </div>
           </div>

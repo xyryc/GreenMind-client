@@ -1,4 +1,5 @@
 import { LuArrowRight } from "react-icons/lu";
+import { Link } from "react-router-dom";
 
 const Categories = () => {
   return (
@@ -23,9 +24,9 @@ const Categories = () => {
             <p className="text-colorSecondary text-lg font-medium w-[352px] sm:w-fit lg:w-[352px] mt-3 mb-6">
               Horem ipsum dolor sit amet, consectetur adipiscing elit.
             </p>
-            <button className="btn btn-ghost text-lg font-medium bg-white rounded-lg ">
+            <Link to="/plants" className="btn btn-ghost text-lg font-medium bg-white rounded-lg ">
               Explore <LuArrowRight />
-            </button>
+            </Link>
           </div>
 
           <div className="xl:absolute xl:-top-12 right-[5%] 2xl:right-[12%] hover:scale-105 duration-500 hover:drop-shadow-md ease-in-out">

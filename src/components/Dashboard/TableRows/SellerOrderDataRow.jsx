@@ -84,7 +84,7 @@ const SellerOrderDataRow = ({ orderData, refetch }) => {
             defaultValue={status}
             onChange={(e) => handleStatusChange(e.target.value)}
             disabled={status === "Delivered"}
-            className="p-1 border-2 border-lime-300 focus:outline-lime-500 rounded-md text-gray-900 whitespace-no-wrap bg-white"
+            className="p-1 border-2 border-lightBlue focus:outline-lightBlue rounded-md text-gray-900 whitespace-no-wrap bg-white"
             name="category"
           >
             <option value="Pending">Pending</option>

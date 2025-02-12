@@ -2,7 +2,7 @@ import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
-import { TbFidgetSpinner } from "react-icons/tb";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import LoadingSpinner from "../../components/Shared/LoadingSpinner";
 import { saveUser } from "../../api/utils";
 
@@ -55,7 +55,7 @@ const Login = () => {
     }
   };
   return (
-    <div className="flex justify-center items-center min-h-screen bg-white">
+    <div className="flex justify-center items-center min-h-screen bg-white font-Poppins">
       <div className="flex flex-col max-w-md p-6 rounded-md sm:p-10 bg-gray-100 text-gray-900">
         <div className="mb-8 text-center">
           <h1 className="my-3 text-4xl font-bold">Log In</h1>
@@ -80,7 +80,7 @@ const Login = () => {
                 id="email"
                 required
                 placeholder="Enter Your Email Here"
-                className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-lime-500 bg-gray-200 text-gray-900"
+                className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-lightBlue bg-gray-200 text-gray-900"
                 data-temp-mail-org="0"
               />
             </div>
@@ -97,7 +97,7 @@ const Login = () => {
                 id="password"
                 required
                 placeholder="*******"
-                className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-lime-500 bg-gray-200 text-gray-900"
+                className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-lightBlue bg-gray-200 text-gray-900"
               />
             </div>
           </div>
@@ -105,10 +105,11 @@ const Login = () => {
           <div>
             <button
               type="submit"
-              className="bg-lime-500 w-full rounded-md py-3 text-white"
+              className="bg-lightBlue w-full rounded-md py-3 text-black"
+              disabled={loading}
             >
               {loading ? (
-                <TbFidgetSpinner className="animate-spin m-auto" />
+                <AiOutlineLoading3Quarters className="animate-spin m-auto" />
               ) : (
                 "Continue"
               )}
@@ -116,7 +117,7 @@ const Login = () => {
           </div>
         </form>
         <div className="space-y-1">
-          <button className="text-xs hover:underline hover:text-lime-500 text-gray-400">
+          <button className="text-xs hover:underline  text-gray-400">
             Forgot password?
           </button>
         </div>
@@ -139,7 +140,7 @@ const Login = () => {
           Don&apos;t have an account yet?{" "}
           <Link
             to="/signup"
-            className="hover:underline hover:text-lime-500 text-gray-600"
+            className="hover:underline hover:text-lightBlue text-gray-600"
           >
             Sign up
           </Link>

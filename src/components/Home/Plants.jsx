@@ -23,7 +23,7 @@ const Plants = () => {
   return (
     <Container>
       <Helmet>
-        <title>Plants | GREENMIND</title>
+        <title>Plants | GreenMind</title>
       </Helmet>
 
       {plants && plants.length > 0 ? (
