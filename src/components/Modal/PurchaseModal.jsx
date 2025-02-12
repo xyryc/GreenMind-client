@@ -91,7 +91,7 @@ const PurchaseModal = ({ closeModal, isOpen, plant, refetch }) => {
     }
   };
 
-  console.log(purchaseInfo);
+  // console.log(purchaseInfo);
 
   return (
     <Transition appear show={isOpen} as={Fragment}>
@@ -164,7 +164,7 @@ const PurchaseModal = ({ closeModal, isOpen, plant, refetch }) => {
                     onBlur={() => {
                       if (totalQuantity === "") setTotalQuantity(1);
                     }}
-                    className="w-14 text-center p-2 border border-lime-300 focus:outline-lime-500 rounded-md bg-white"
+                    className="w-14 text-center p-2 border border-lightBlue outline-lightBlue rounded-md bg-white"
                     name="quantity"
                     id="quantity"
                     type="number"
@@ -180,12 +180,12 @@ const PurchaseModal = ({ closeModal, isOpen, plant, refetch }) => {
                 </div>
 
                 {/* Address input field */}
-                <div className="space-x-2 text-sm mt-4">
+                <div className="text-sm mt-4">
                   <label htmlFor="address" className="text-gray-600">
                     Address:
                   </label>
                   <input
-                    className="p-2 text-gray-800 border border-lime-300 focus:outline-lime-500 rounded-md bg-white w-full"
+                    className="p-2 text-gray-800 border border-lightBlue outline-lightBlue rounded-md bg-white w-full"
                     name="address"
                     id="address"
                     onChange={(e) =>

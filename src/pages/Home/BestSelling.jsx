@@ -4,7 +4,7 @@ import axios from "axios";
 const BestSelling = () => {
   // Queries
   const { data: topPlants = [] } = useQuery({
-    queryKey: ["todos"],
+    queryKey: ["topPlants"],
     queryFn: async () => {
       const { data } = await axios.get(
         `${import.meta.env.VITE_API_URL}/top-selling-plants`

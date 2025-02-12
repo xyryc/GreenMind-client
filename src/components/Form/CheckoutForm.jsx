@@ -2,32 +2,31 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import "./CheckoutForm.css";
 import Button from "../Shared/Button/Button";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
 
 const CheckoutForm = ({ closeModal, purchaseInfo, refetch, totalQuantity }) => {
   const navigate = useNavigate();
   const axiosSecure = useAxiosSecure();
-  const [clientSecret, setClientSecret] = useState("");
+
   const [processing, setProcessing] = useState(false);
 
-  useEffect(() => {
-    getPaymentIntent();
-  }, [purchaseInfo]);
-
-  const getPaymentIntent = async () => {
-    try {
+  const { data: clientSecret = "" } = useQuery({
+    queryKey: ["createPaymentIntent"],
+    enabled: purchaseInfo.quantity > 0,
+    queryFn: async () => {
       const { data } = await axiosSecure.post("/create-payment-intent", {
         quantity: purchaseInfo?.quantity,
         plantId: purchaseInfo?.plantId,
       });
-      setClientSecret(data.clientSecret);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+
+      return data.clientSecret;
+    },
+  });
+  console.log(clientSecret);
 
   const stripe = useStripe();
   const elements = useElements();
@@ -107,6 +106,7 @@ const CheckoutForm = ({ closeModal, purchaseInfo, refetch, totalQuantity }) => {
   return (
     <form onSubmit={handleSubmit}>
       <CardElement
+        className="border-lightBlue border"
         options={{
           style: {
             base: {
@@ -125,7 +125,6 @@ const CheckoutForm = ({ closeModal, purchaseInfo, refetch, totalQuantity }) => {
 
       <div className="flex justify-around mt-2 gap-2">
         <Button
-        
           type="submit"
           label={`Pay $${purchaseInfo?.price}`}
           disabled={!stripe || !clientSecret || processing}

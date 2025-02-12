@@ -22,9 +22,8 @@ const Button = ({
           transition
           px-4
           w-full
-          ${outline ? "bg-white" : "bg-lime-500"}
-          ${outline ? "border-black" : "border-lime-500"}
-          ${outline ? "text-black" : "text-white"}
+          ${outline ? "bg-white" : "bg-lightBlue"}
+          ${outline ? "border-[1px] border-colorPrimary" : "border-none"}
           ${small ? "text-sm" : "text-md"}
           ${small ? "py-1" : "py-3"}
           ${small ? "font-light" : "font-semibold"}
