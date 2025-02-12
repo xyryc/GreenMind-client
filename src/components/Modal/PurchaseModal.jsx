@@ -6,7 +6,7 @@ import {
   DialogPanel,
   DialogTitle,
 } from "@headlessui/react";
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import { toast } from "react-hot-toast";
 import { Elements } from "@stripe/react-stripe-js";
@@ -34,24 +34,64 @@ const PurchaseModal = ({ closeModal, isOpen, plant, refetch }) => {
     status: "Pending",
   });
 
-  const handleQuantity = (value) => {
-    if (value > quantity) {
+  useEffect(() => {
+    if (user) {
+      setPurchaseInfo((prev) => ({
+        ...prev,
+        customer: {
+          name: user.displayName || "",
+          email: user.email || "",
+          image: user.photoURL || "",
+        },
+      }));
+    }
+  }, [user]);
+
+  useEffect(() => {
+    setPurchaseInfo((prev) => ({
+      ...prev,
+      price: totalPrice,
+      quantity: totalQuantity,
+    }));
+  }, [totalPrice, totalQuantity]);
+
+  const handleQuantityChange = (value) => {
+    if (value === "") {
+      setTotalQuantity("");
+      return;
+    }
+
+    const numValue = parseInt(value);
+    if (isNaN(numValue) || numValue < 1) {
+      setTotalQuantity(1);
+      setTotalPrice(price);
+      return;
+    }
+
+    if (numValue > quantity) {
       setTotalQuantity(quantity);
       return toast.error("Quantity exceeds available stock!");
     }
 
-    if (value < 0) {
-      setTotalQuantity(1);
-      return toast.error("Quantity can't be less than 1");
-    }
-
-    setTotalQuantity(value);
-    setTotalPrice(value * price);
-
-    setPurchaseInfo((prev) => {
-      return { ...prev, quantity: value, price: value * price };
-    });
+    setTotalQuantity(numValue);
+    setTotalPrice(numValue * price);
   };
+
+  const incrementQuantity = () => {
+    if (totalQuantity < quantity) {
+      setTotalQuantity((prev) => prev + 1);
+      setTotalPrice((prev) => prev + price);
+    }
+  };
+
+  const decrementQuantity = () => {
+    if (totalQuantity > 1) {
+      setTotalQuantity((prev) => prev - 1);
+      setTotalPrice((prev) => prev - price);
+    }
+  };
+
+  console.log(purchaseInfo);
 
   return (
     <Transition appear show={isOpen} as={Fragment}>
@@ -97,7 +137,6 @@ const PurchaseModal = ({ closeModal, isOpen, plant, refetch }) => {
                     Customer: {user?.displayName}
                   </p>
                 </div>
-
                 <div className="mt-2">
                   <p className="text-sm text-gray-500">Price: $ {price}</p>
                 </div>
@@ -107,36 +146,53 @@ const PurchaseModal = ({ closeModal, isOpen, plant, refetch }) => {
                   </p>
                 </div>
 
-                {/* quantiy input field */}
-                <div className="space-x-2 text-sm mt-2">
-                  <label htmlFor="quantity" className="text-gray-600">
+                {/* Quantity input field with buttons */}
+                <div className="flex items-center space-x-2 mt-3">
+                  <label htmlFor="quantity" className="text-sm text-gray-600">
                     Quantity:
                   </label>
+                  <button
+                    onClick={decrementQuantity}
+                    disabled={totalQuantity <= 1}
+                    className="px-3 py-1 text-lg bg-gray-200 rounded-md disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    −
+                  </button>
                   <input
                     value={totalQuantity}
-                    onChange={(e) => handleQuantity(parseInt(e.target.value))}
-                    className="p-2 text-gray-800 border border-lime-300 focus:outline-lime-500 rounded-md bg-white"
+                    onChange={(e) => handleQuantityChange(e.target.value)}
+                    onBlur={() => {
+                      if (totalQuantity === "") setTotalQuantity(1);
+                    }}
+                    className="w-14 text-center p-2 border border-lime-300 focus:outline-lime-500 rounded-md bg-white"
                     name="quantity"
                     id="quantity"
                     type="number"
-                    placeholder="Available quantity"
                     required
                   />
+                  <button
+                    onClick={incrementQuantity}
+                    disabled={totalQuantity >= quantity}
+                    className="px-3 py-1 text-lg bg-gray-200 rounded-md disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    +
+                  </button>
                 </div>
 
-                {/* address input field */}
-                <div className="space-x-2 text-sm mt-2">
+                {/* Address input field */}
+                <div className="space-x-2 text-sm mt-4">
                   <label htmlFor="address" className="text-gray-600">
                     Address:
                   </label>
                   <input
-                    className="p-2 text-gray-800 border border-lime-300 focus:outline-lime-500 rounded-md bg-white"
+                    className="p-2 text-gray-800 border border-lime-300 focus:outline-lime-500 rounded-md bg-white w-full"
                     name="address"
                     id="address"
                     onChange={(e) =>
-                      setPurchaseInfo((prev) => {
-                        return { ...prev, address: e.target.value };
-                      })
+                      setPurchaseInfo((prev) => ({
+                        ...prev,
+                        address: e.target.value,
+                      }))
                     }
                     type="text"
                     placeholder="Shipping address"
@@ -144,9 +200,8 @@ const PurchaseModal = ({ closeModal, isOpen, plant, refetch }) => {
                   />
                 </div>
 
-                {/* checkout form */}
+                {/* Checkout form */}
                 <Elements stripe={stripePromise}>
-                  {/* form component */}
                   <CheckoutForm
                     closeModal={closeModal}
                     purchaseInfo={purchaseInfo}

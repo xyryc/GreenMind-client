@@ -1,0 +1,56 @@
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
+
+const BestSelling = () => {
+  // Queries
+  const { data: topPlants = [] } = useQuery({
+    queryKey: ["todos"],
+    queryFn: async () => {
+      const { data } = await axios.get(
+        `${import.meta.env.VITE_API_URL}/top-selling-plants`
+      );
+      return data;
+    },
+  });
+
+  console.log(topPlants);
+
+  return (
+    <section className="mx-auto max-w-screen-xl mt-24">
+      <div className="inline-flex gap-14">
+        {/* <!-- Text Content --> */}
+        <div className="w-2/12">
+          <h2 className="text-[2rem] font-bold">Best Selling Plants</h2>
+          <p className="text-colorSecondary text-lg font-medium mt-3 mb-6 w-11/12">
+            Easiest way to healthy life by buying your favorite plants
+          </p>
+          <button className="btn text-lg font-medium bg-lightBlue rounded-lg">
+            See more <i className="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+
+        {/* <!-- Card Container --> */}
+        <div className="inline-flex gap-12">
+          {/* <!-- Card --> */}
+          {topPlants.map((plants) => (
+            <div key={plants._id} className="group overflow-hidden ">
+              <div className="h-[363px] w-[300px] relative overflow-hidden rounded-xl">
+                <img
+                  className="w-full h-full object-cover group-hover:scale-105 transition duration-300 ease-in-out"
+                  src={plants.image}
+                  alt={plants.name}
+                />
+              </div>
+              <p className="text-lg font-medium mt-3 mb-2">{plants.name}</p>
+              <p className="text-colorSecondary text-lg font-medium">
+                $ {plants.price}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default BestSelling;

@@ -10,6 +10,7 @@ import SellerMenu from "./Menu/SellerMenu";
 import CustomerMenu from "./Menu/CustomerMenu";
 import logo from "../../../assets/images/logo-flat.png";
 import useRole from "./../../../hooks/useRole";
+
 const Sidebar = () => {
   const { logOut } = useAuth();
   const [role] = useRole();
@@ -26,14 +27,8 @@ const Sidebar = () => {
       <div className="bg-gray-100 text-gray-800 flex justify-between md:hidden">
         <div>
           <div className="block cursor-pointer p-4 font-bold">
-            <Link to="/">
-              <img
-                // className='hidden md:block'
-                src={logo}
-                alt="logo"
-                width="100"
-                height="100"
-              />
+            <Link className="text-2xl text-colorPrimary font-Quella">
+              GREENMIND
             </Link>
           </div>
         </div>
@@ -54,15 +49,9 @@ const Sidebar = () => {
       >
         <div>
           <div>
-            <div className="w-full hidden md:flex px-4 py-2 shadow-lg rounded-lg justify-center items-center bg-lime-100 mx-auto">
-              <Link to="/">
-                <img
-                  // className='hidden md:block'
-                  src={logo}
-                  alt="logo"
-                  width="100"
-                  height="100"
-                />
+            <div className="w-full hidden md:flex px-4 py-2 shadow-lg rounded-lg justify-center items-center bg-gray-200 mx-auto">
+              <Link to="/" className="text-2xl text-colorPrimary font-Quella">
+                GREENMIND
               </Link>
             </div>
           </div>

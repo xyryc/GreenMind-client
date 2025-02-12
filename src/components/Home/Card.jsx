@@ -16,13 +16,7 @@ const Card = ({ plant }) => {
             src={image}
             alt="Plant Image"
           />
-          <div
-            className="
-              absolute
-              top-3
-              right-3
-            "
-          ></div>
+          <div className="absolute top-3 right-3"></div>
         </div>
         <div className="font-semibold text-lg">{name}</div>
         <div className="font-semibold text-lg">Category: {category}</div>

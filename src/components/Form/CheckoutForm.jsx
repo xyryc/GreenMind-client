@@ -125,6 +125,7 @@ const CheckoutForm = ({ closeModal, purchaseInfo, refetch, totalQuantity }) => {
 
       <div className="flex justify-around mt-2 gap-2">
         <Button
+        
           type="submit"
           label={`Pay $${purchaseInfo?.price}`}
           disabled={!stripe || !clientSecret || processing}

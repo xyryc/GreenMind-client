@@ -4,6 +4,7 @@ import Banner from "./Banner";
 import About from "./About";
 import Categories from "./Categories";
 import Reviews from "./Reviews";
+import BestSelling from "./BestSelling";
 
 const Home = () => {
   return (
@@ -15,6 +16,8 @@ const Home = () => {
       <div className="container mx-auto px-4 space-y-28">
         <Banner />
 
+        <BestSelling />
+
         <About />
       </div>
 
@@ -24,7 +27,7 @@ const Home = () => {
         <Reviews />
       </div>
 
-      {/* <Plants /> */}
+      <Plants />
     </div>
   );
 };
