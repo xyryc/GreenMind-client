@@ -4,7 +4,7 @@ const Banner = () => {
   return (
     <section>
       <div className="bg-lightBlue rounded-3xl flex">
-        <div className="pt-12 pl-12 mb-32">
+        <div className="p-6 sm:pt-12 sm:pl-12 mb-10 xl:mb-32">
           <h1 className="text-[4rem] font-extrabold text-black">
             Buy your dream plants
           </h1>
@@ -23,7 +23,7 @@ const Banner = () => {
             </div>
           </div>
 
-          <div className="flex w-[449px] rounded-xl bg-white">
+          <div className="flex sm:w-[449px] rounded-xl bg-white">
             <input
               className="w-full border-none bg-transparent p-[18px] outline-none"
               type="text"
@@ -35,14 +35,14 @@ const Banner = () => {
           </div>
         </div>
 
-        <div className="relative w-full">
+        <div className="hidden xl:block relative w-full">
           <img
             className="absolute right-6 top-3"
             src="/rounded_arrow.png"
             alt=""
           />
           <img
-            className="absolute bottom-12 left-20"
+            className="absolute bottom-12 left-14"
             src="/rounded_arrow-2.png"
             alt=""
           />
