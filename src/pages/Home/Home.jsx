@@ -3,6 +3,7 @@ import Plants from "../../components/Home/Plants";
 import Banner from "./Banner";
 import About from "./About";
 import Categories from "./Categories";
+import Reviews from "./Reviews";
 
 const Home = () => {
   return (
@@ -17,7 +18,11 @@ const Home = () => {
         <About />
       </div>
 
-      <Categories />
+      <div className="space-y-24">
+        <Categories />
+
+        <Reviews />
+      </div>
 
       {/* <Plants /> */}
     </div>

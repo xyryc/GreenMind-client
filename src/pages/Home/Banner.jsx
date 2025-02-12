@@ -5,7 +5,7 @@ const Banner = () => {
     <section>
       <div className="bg-lightBlue rounded-3xl flex">
         <div className="p-6 sm:pt-12 sm:pl-12 mb-10 xl:mb-32">
-          <h1 className="text-[4rem] font-extrabold text-black">
+          <h1 className="text-[3.9rem] 2xl:text-[4rem] font-extrabold text-black capitalize">
             Buy your dream plants
           </h1>
 

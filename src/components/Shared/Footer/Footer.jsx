@@ -15,13 +15,13 @@ const Footer = () => {
             </p>
             {/* <!-- socials  try: grid-flow-col --> */}
             <div className="grid grid-cols-3 justify-center place-items-center gap-6">
-              <span className="p-4 border border-colorSecondary rounded-full">
+              <span className="p-4 border border-colorSecondary rounded-full cursor-pointer">
                 <FaFacebookF />
               </span>
-              <span className="p-4 border border-colorSecondary rounded-full">
+              <span className="p-4 border border-colorSecondary rounded-full cursor-pointer">
                 <FaInstagram />
               </span>
-              <span className="p-4 border border-colorSecondary rounded-full">
+              <span className="p-4 border border-colorSecondary rounded-full cursor-pointer">
                 <FaTwitter />
               </span>
             </div>
