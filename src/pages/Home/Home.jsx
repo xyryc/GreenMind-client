@@ -10,7 +10,7 @@ const Home = () => {
   return (
     <div>
       <Helmet>
-        <title> PlantNet | Buy Your Desired Plant</title>
+        <title>GREENMIND</title>
       </Helmet>
 
       <div className="container mx-auto px-4 space-y-28">
@@ -26,8 +26,6 @@ const Home = () => {
 
         <Reviews />
       </div>
-
-      <Plants />
     </div>
   );
 };

@@ -26,7 +26,6 @@ const CheckoutForm = ({ closeModal, purchaseInfo, refetch, totalQuantity }) => {
       return data.clientSecret;
     },
   });
-  console.log(clientSecret);
 
   const stripe = useStripe();
   const elements = useElements();

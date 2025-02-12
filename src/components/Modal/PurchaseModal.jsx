@@ -91,10 +91,8 @@ const PurchaseModal = ({ closeModal, isOpen, plant, refetch }) => {
     }
   };
 
-  // console.log(purchaseInfo);
-
   return (
-    <Transition appear show={isOpen} as={Fragment}>
+    <Transition appear show={isOpen} as={Fragment} className="font-Poppins">
       <Dialog as="div" className="relative z-10" onClose={closeModal}>
         <TransitionChild
           as={Fragment}

@@ -28,7 +28,7 @@ const ManageOrders = () => {
   return (
     <>
       <Helmet>
-        <title>Manage Orders</title>
+        <title>Manage Orders | Dashboard</title>
       </Helmet>
       <div className="container mx-auto px-4 sm:px-8">
         <div className="py-8">

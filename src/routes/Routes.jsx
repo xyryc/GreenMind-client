@@ -16,6 +16,7 @@ import ManageOrders from "../pages/Dashboard/Seller/ManageOrders";
 import MyOrders from "../pages/Dashboard/Customer/MyOrders";
 import SellerRoute from "./SellerRoute";
 import AdminRoute from "./AdminRoute";
+import Plants from "../components/Home/Plants";
 
 export const router = createBrowserRouter([
   {
@@ -26,6 +27,10 @@ export const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+      },
+      {
+        path: "/plants",
+        element: <Plants />,
       },
       {
         path: "/plant/:id",

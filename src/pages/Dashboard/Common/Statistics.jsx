@@ -16,7 +16,7 @@ const Statistics = () => {
   return (
     <div>
       <Helmet>
-        <title>Dashboard</title>
+        <title>Stats | Dashboard</title>
       </Helmet>
 
       {role === "admin" && <AdminStatistics />}
