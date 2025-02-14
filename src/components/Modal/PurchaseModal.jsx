@@ -136,11 +136,13 @@ const PurchaseModal = ({ closeModal, isOpen, plant, refetch }) => {
                   </p>
                 </div>
                 <div className="mt-2">
-                  <p className="text-sm text-gray-500">Price: $ {price}</p>
+                  <p className="text-sm text-gray-500">
+                    Available: {quantity} units
+                  </p>
                 </div>
                 <div className="mt-2">
                   <p className="text-sm text-gray-500">
-                    Available Quantity: {quantity}
+                    Price: ${price} per unit
                   </p>
                 </div>
 
@@ -183,7 +185,7 @@ const PurchaseModal = ({ closeModal, isOpen, plant, refetch }) => {
                     Address:
                   </label>
                   <input
-                    className="p-2 text-gray-800 border border-lightBlue outline-lightBlue rounded-md bg-white w-full"
+                    className="px-4 py-2 mt-1 text-gray-800 border border-lightBlue outline-lightBlue rounded-md bg-white w-full"
                     name="address"
                     id="address"
                     onChange={(e) =>
