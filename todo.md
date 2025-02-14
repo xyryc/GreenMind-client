@@ -10,11 +10,10 @@
 - plant details page, redesign ✅
 - payment loading spinner ✅
 - make footer functional ✅
+- update seller and admin creds in readme ✅
+- change firebase config ✅
+- add readme ✅
+- profile page update
 - add image to login, signup pages
 - make functional -> update profile, change password
-- profile page update
 - plant details update functionality
-- change database name and deploy
-- update seller and admin creds in readme
-- change firebase config
-- add readme

@@ -1,4 +1,5 @@
 import { LuSearch } from "react-icons/lu";
+import { Link } from "react-router-dom";
 
 const Banner = () => {
   return (
@@ -23,7 +24,13 @@ const Banner = () => {
             </div>
           </div>
 
-          <div className="flex sm:w-[449px] rounded-xl bg-white">
+          <div>
+            <Link to="/plants" className="btn btn-wide">
+              Buy Now
+            </Link>
+          </div>
+
+          <div className="flex sm:w-[449px] rounded-xl bg-white hidden">
             <input
               className="w-full border-none bg-transparent p-[18px] outline-none"
               type="text"

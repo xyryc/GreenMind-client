@@ -47,9 +47,9 @@ const PlantDetails = () => {
 
       <div className="flex flex-col max-w-screen-md 2xl:max-w-screen-xl mx-auto md:flex-row justify-center gap-10 p-6 bg-lightBlue rounded-xl">
         {/* image */}
-        <div className="h-[70vh] md:w-1/2">
+        <div className="h-[70vh] md:w-1/2 group relative overflow-hidden rounded-xl">
           <img
-            className="duration-700 object-cover w-full mx-auto h-full rounded-xl"
+            className="scale-110 group-hover:scale-100 transition-transform duration-700 object-cover w-full h-full rounded-xl"
             src={image}
             alt="Plant Image"
           />
@@ -64,11 +64,11 @@ const PlantDetails = () => {
 
             <h1 className="text-2xl font-bold mb-2">{name}</h1>
 
-            <p className="font-bold text-3xl text-gray-500 mb-2">${price}</p>
+            <p className="font-bold text-3xl  mb-2">${price}</p>
 
-            <div className="text-colorSecondary">
-              {description.length > 320
-                ? description.slice(0, 320) + "..."
+            <div>
+              {description.length > 400
+                ? description.slice(0, 400) + "..."
                 : description}
             </div>
           </div>
