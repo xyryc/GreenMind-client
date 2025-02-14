@@ -49,7 +49,7 @@ const Sidebar = () => {
       >
         <div>
           <div>
-            <div className="w-full hidden md:flex px-4 py-2 shadow-lg rounded-lg justify-center items-center bg-gray-200 mx-auto">
+            <div className="w-full hidden md:flex px-4 py-2 shadow-lg rounded-lg justify-center items-center bg-lightBlue mx-auto">
               <Link to="/" className="text-2xl text-colorPrimary font-Quella">
                 GreenMind
               </Link>

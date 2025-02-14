@@ -10,7 +10,7 @@ const UpdatePlantForm = () => {
                 Name
               </label>
               <input
-                className='w-full px-4 py-3 text-gray-800 border border-lime-300 focus:outline-lime-500 rounded-md bg-white'
+                className='w-full px-4 py-3 text-gray-800 border border-lightBlue focus:outline-lightBlue rounded-md bg-white'
                 name='name'
                 id='name'
                 type='text'
@@ -25,7 +25,7 @@ const UpdatePlantForm = () => {
               </label>
               <select
                 required
-                className='w-full px-4 py-3 border-lime-300 focus:outline-lime-500 rounded-md bg-white'
+                className='w-full px-4 py-3 border border-lightBlue focus:outline-lightblborder-lightBlue rounded-md bg-white'
                 name='category'
               >
                 <option value='Indoor'>Indoor</option>
@@ -43,7 +43,7 @@ const UpdatePlantForm = () => {
               <textarea
                 id='description'
                 placeholder='Write plant description here...'
-                className='block rounded-md focus:lime-300 w-full h-32 px-4 py-3 text-gray-800  border border-lime-300 bg-white focus:outline-lime-500 '
+                className='block rounded-md w-full h-32 px-4 py-3 text-gray-800  border border-lightBlue bg-white focus:outline-lightBlue'
                 name='description'
               ></textarea>
             </div>
@@ -57,7 +57,7 @@ const UpdatePlantForm = () => {
                   Price
                 </label>
                 <input
-                  className='w-full px-4 py-3 text-gray-800 border border-lime-300 focus:outline-lime-500 rounded-md bg-white'
+                  className='w-full px-4 py-3 text-gray-800 border border-lightBlue focus:outline-lightBlue rounded-md bg-white'
                   name='price'
                   id='price'
                   type='number'
@@ -72,7 +72,7 @@ const UpdatePlantForm = () => {
                   Quantity
                 </label>
                 <input
-                  className='w-full px-4 py-3 text-gray-800 border border-lime-300 focus:outline-lime-500 rounded-md bg-white'
+                  className='w-full px-4 py-3 text-gray-800 border border-lightBlue focus:outline-lightBlue rounded-md bg-white'
                   name='quantity'
                   id='quantity'
                   type='number'
@@ -94,7 +94,7 @@ const UpdatePlantForm = () => {
                       accept='image/*'
                       hidden
                     />
-                    <div className='bg-lime-500 text-white border border-gray-300 rounded font-semibold cursor-pointer p-1 px-3 hover:bg-lime-500'>
+                    <div className='bg-lightBlue rounded font-semibold cursor-pointer p-1 px-3 hover:bg-lightBlue'>
                       Upload Image
                     </div>
                   </label>
@@ -105,7 +105,7 @@ const UpdatePlantForm = () => {
             {/* Submit Button */}
             <button
               type='submit'
-              className='w-full p-3 mt-5 text-center font-medium text-white transition duration-200 rounded shadow-md bg-lime-500 '
+              className='w-full p-3 mt-5 text-center font-medium transition duration-200 rounded shadow-md bg-lightBlue'
             >
               Update Plant
             </button>
