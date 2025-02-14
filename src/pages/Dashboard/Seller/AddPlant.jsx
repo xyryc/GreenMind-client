@@ -29,6 +29,11 @@ const AddPlant = () => {
     const image = form.image.files[0];
     const image_url = await imageUpload(image);
 
+    if (description.length < 320) {
+      alert("Description must be at least 320 characters long.");
+      return;
+    }
+
     // seller info
     const seller = {
       name: user?.displayName,

@@ -26,14 +26,15 @@ const AddPlantForm = ({
                 required
               />
             </div>
+
             {/* Category */}
             <div className="space-y-1 text-sm">
-              <label htmlFor="category" className="block text-gray-600 ">
+              <label htmlFor="category" className="block text-gray-600">
                 Category
               </label>
               <select
                 required
-                className="w-full px-4 py-3 border-lightBlue focus:outline-lightBlue rounded-md bg-white"
+                className="w-full px-4 py-3 border border-lightBlue focus:outline-lightBlue rounded-md bg-white"
                 name="category"
               >
                 <option value="Indoor">Indoor</option>
@@ -42,6 +43,7 @@ const AddPlantForm = ({
                 <option value="Flowering">Flowering</option>
               </select>
             </div>
+
             {/* Description */}
             <div className="space-y-1 text-sm">
               <label htmlFor="description" className="block text-gray-600">
@@ -53,6 +55,8 @@ const AddPlantForm = ({
                 placeholder="Write plant description here..."
                 className="block rounded-md w-full h-32 px-4 py-3 text-gray-800  border border-lightBlue bg-white focus:outline-lightBlue"
                 name="description"
+                minLength={320}
+                required
               ></textarea>
             </div>
           </div>
@@ -65,7 +69,7 @@ const AddPlantForm = ({
                   Price
                 </label>
                 <input
-                  className="w-full px-4 py-3 text-gray-800 border border-lightboutline-lightBlue focus:outline-lightBlue rounded-md bg-white"
+                  className="w-full px-4 py-3 text-gray-800 border border-lightBlue outline-lightBlue focus:outline-lightBlue rounded-md bg-white"
                   name="price"
                   id="price"
                   type="number"
@@ -102,6 +106,7 @@ const AddPlantForm = ({
                       id="image"
                       accept="image/*"
                       hidden
+                      required
                     />
                     <div className="bg-lightBlue text-black rounded cursor-pointer p-1 px-3">
                       {uploadImage?.name}

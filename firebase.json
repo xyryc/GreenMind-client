@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "site": "plantnet-ecommerce",
+    "site": "greenmind-ecommerce",
     "public": "dist",
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "rewrites": [

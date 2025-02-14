@@ -1,4 +1,5 @@
 import { FaInstagram, FaFacebookF, FaTwitter } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -35,50 +36,73 @@ const Footer = () => {
         <div className="flex flex-col sm:flex-row gap-12">
           {/* <!-- container 1 --> */}
           <div className="flex flex-col gap-6">
-            <a className="text-lg font-bold" href="">
-              Information
-            </a>
-            <a className="text-lg font-normal text-colorSecondary" href="">
-              About
-            </a>
-            <a className="text-lg font-normal text-colorSecondary" href="">
-              Product
-            </a>
-            <a className="text-lg font-normal text-colorSecondary" href="">
-              Blog
-            </a>
+            <span className="text-lg font-bold">Information</span>
+            <Link to="/" className="text-lg font-normal text-colorSecondary">
+              Home
+            </Link>
+            <Link
+              to="/plants"
+              className="text-lg font-normal text-colorSecondary"
+            >
+              Plants
+            </Link>
+            <Link
+              to="/dashboard"
+              className="text-lg font-normal text-colorSecondary"
+            >
+              Dashboard
+            </Link>
           </div>
 
           {/* <!-- Container 2 --> */}
           <div className="flex flex-col gap-6">
-            <a className="text-lg font-bold" href="">
-              Company
-            </a>
-            <a className="text-lg font-normal text-colorSecondary" href="">
-              Community
-            </a>
-            <a className="text-lg font-normal text-colorSecondary" href="">
-              Career
-            </a>
-            <a className="text-lg font-normal text-colorSecondary" href="">
-              Our story
-            </a>
+            <span className="text-lg font-bold">Seller</span>
+            <Link
+              to="/dashboard/add-plant"
+              className="text-lg font-normal text-colorSecondary"
+            >
+              Plant
+            </Link>
+            <Link
+              to="/dashboard/my-inventory"
+              className="text-lg font-normal text-colorSecondary"
+              href=""
+            >
+              Inventory
+            </Link>
+            <Link
+              to="/dashboard/manage-orders"
+              className="text-lg font-normal text-colorSecondary"
+            >
+              Orders
+            </Link>
           </div>
 
           {/* <!-- Container 3 --> */}
           <div className="flex flex-col gap-6">
-            <a className="text-lg font-bold" href="">
-              Contact
-            </a>
-            <a className="text-lg font-normal text-colorSecondary" href="">
-              Getting Started
-            </a>
-            <a className="text-lg font-normal text-colorSecondary" href="">
-              Pricing
-            </a>
-            <a className="text-lg font-normal text-colorSecondary" href="">
-              Resources
-            </a>
+            <span className="text-lg font-bold" href="">
+              Profile
+            </span>
+            <Link
+              to="/login"
+              className="text-lg font-normal text-colorSecondary"
+              href=""
+            >
+              Login
+            </Link>
+            <Link
+              to="/signup"
+              className="text-lg font-normal text-colorSecondary"
+              href=""
+            >
+              Sign Up
+            </Link>
+            <Link
+              to="/dashboard/profile"
+              className="text-lg font-normal text-colorSecondary"
+            >
+              Profile
+            </Link>
           </div>
         </div>
       </div>

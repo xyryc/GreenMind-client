@@ -1,4 +1,3 @@
-import { BsFingerprint } from "react-icons/bs";
 import { GrUserAdmin } from "react-icons/gr";
 import MenuItem from "./MenuItem";
 import { useState } from "react";
@@ -6,6 +5,7 @@ import BecomeSellerModal from "../../../Modal/BecomeSellerModal";
 import useAxiosSecure from "./../../../../hooks/useAxiosSecure";
 import useAuth from "../../../../hooks/useAuth";
 import { toast } from "react-hot-toast";
+import { RiSeedlingLine } from "react-icons/ri";
 
 const CustomerMenu = () => {
   const { user } = useAuth();
@@ -31,7 +31,7 @@ const CustomerMenu = () => {
 
   return (
     <>
-      <MenuItem icon={BsFingerprint} label="My Orders" address="my-orders" />
+      <MenuItem icon={RiSeedlingLine} label="My Orders" address="my-orders" />
 
       <div
         onClick={() => setIsOpen(true)}

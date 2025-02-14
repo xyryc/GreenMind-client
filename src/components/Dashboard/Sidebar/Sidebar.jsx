@@ -1,15 +1,15 @@
 import { useState } from "react";
 import { GrLogout } from "react-icons/gr";
 import { FcSettings } from "react-icons/fc";
-import { AiOutlineBars } from "react-icons/ai";
+import { AiOutlineBars, AiOutlineHome } from "react-icons/ai";
 import MenuItem from "./Menu/MenuItem";
 import useAuth from "../../../hooks/useAuth";
 import AdminMenu from "./Menu/AdminMenu";
 import { Link } from "react-router-dom";
 import SellerMenu from "./Menu/SellerMenu";
 import CustomerMenu from "./Menu/CustomerMenu";
-import logo from "../../../assets/images/logo-flat.png";
 import useRole from "./../../../hooks/useRole";
+
 
 const Sidebar = () => {
   const { logOut } = useAuth();
@@ -69,6 +69,8 @@ const Sidebar = () => {
 
         <div>
           <hr />
+
+          <MenuItem icon={AiOutlineHome} label="Home" address="/" />
 
           <MenuItem
             icon={FcSettings}

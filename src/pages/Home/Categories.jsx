@@ -22,9 +22,13 @@ const Categories = () => {
             <img src="/plant-5.png" alt="" />
             <h3 className="text-lg font-bold mt-3">Plant Accessories</h3>
             <p className="text-colorSecondary text-lg font-medium w-[352px] sm:w-fit lg:w-[352px] mt-3 mb-6">
-              Horem ipsum dolor sit amet, consectetur adipiscing elit.
+              Enhance your plants with premium tools and stylish decorative
+              pieces.
             </p>
-            <Link to="/plants" className="btn btn-ghost text-lg font-medium bg-white rounded-lg ">
+            <Link
+              to="/plants"
+              className="btn btn-ghost text-lg font-medium bg-white rounded-lg "
+            >
               Explore <LuArrowRight />
             </Link>
           </div>
