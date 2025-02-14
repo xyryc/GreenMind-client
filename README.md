@@ -11,3 +11,5 @@
 - payment loading spinner ✅
 - add image to login, signup pages
 - make functional -> update profile, change password
+- make footer functional
+- add readme

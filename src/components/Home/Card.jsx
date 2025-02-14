@@ -1,16 +1,17 @@
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
+import { RiPlantLine } from "react-icons/ri";
 
 const Card = ({ plant }) => {
-  const { category, image, name, price, quantity, _id } = plant || {};
+  const { category, image, name, price, _id } = plant || {};
 
   return (
     <Link
       to={`/plant/${_id}`}
-      className="col-span-1 cursor-pointer group shadow-xl p-3 rounded-xl"
+      className="col-span-1 cursor-pointer group rounded-xl"
     >
       <div className="flex flex-col gap-2 w-full">
-        <div className="aspect-square w-full relative overflow-hidden rounded-xl">
+        <div className="w-full h-[300px] relative overflow-hidden rounded-xl">
           <img
             className="object-cover h-full w-full group-hover:scale-110 transition duration-700 ease-in-out"
             src={image}
@@ -18,11 +19,15 @@ const Card = ({ plant }) => {
           />
           <div className="absolute top-3 right-3"></div>
         </div>
-        <div className="font-semibold text-lg">{name}</div>
-        <div className="font-semibold text-lg">Category: {category}</div>
-        <div className="font-semibold text-lg">Quantity: {quantity}</div>
-        <div className="flex flex-row items-center gap-1">
-          <div className="font-semibold"> Price: ${price}</div>
+
+        <div className="p-2">
+          <div className="flex items-center gap-1 text-sm">
+            <RiPlantLine /> {category}
+          </div>
+
+          <div className="text-lg font-semibold mb-1">{name}</div>
+
+          <span className="text-xl">${price}</span>
         </div>
       </div>
     </Link>

@@ -23,7 +23,10 @@ const BestSelling = () => {
           <p className="text-colorSecondary text-lg font-medium mt-3 mb-6 w-11/12">
             Easiest way to healthy life by buying your favorite plants
           </p>
-          <Link to={"/plants"} className="btn text-lg font-medium bg-lightBlue rounded-lg">
+          <Link
+            to={"/plants"}
+            className="btn text-lg font-medium bg-lightBlue rounded-lg"
+          >
             See more <i className="fa-solid fa-arrow-right"></i>
           </Link>
         </div>
