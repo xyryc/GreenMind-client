@@ -11,7 +11,7 @@ const Profile = () => {
   if ((loading, isLoading)) return <LoadingSpinner />;
 
   return (
-    <div className="flex justify-center items-center h-screen">
+    <div className="flex justify-center items-center h-[90vh] max-w-screen-xl mx-auto">
       <Helmet>
         <title>Profile | Dashboard</title>
       </Helmet>

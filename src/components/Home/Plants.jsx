@@ -20,6 +20,8 @@ const Plants = () => {
   if (isLoading) return <LoadingSpinner />;
   // console.log(plants);
 
+  
+
   return (
     <Container>
       <Helmet>
