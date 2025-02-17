@@ -3,6 +3,8 @@ import { useState } from "react";
 import DeleteModal from "../../Modal/DeleteModal";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { toast } from "react-hot-toast";
+import { motion } from "framer-motion";
+
 const CustomerOrderDataRow = ({ order, refetch }) => {
   const axiosSecure = useAxiosSecure();
   let [isOpen, setIsOpen] = useState(false);
@@ -35,7 +37,12 @@ const CustomerOrderDataRow = ({ order, refetch }) => {
   };
 
   return (
-    <tr>
+    <motion.tr
+    initial={{ opacity: 0, y: 10 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.3, ease: "easeOut" }}
+    viewport={{ once: true }} // Animate only once when it enters the viewport
+  >
       <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
         <div className="flex items-center">
           <div className="flex-shrink-0">
@@ -81,7 +88,7 @@ const CustomerOrderDataRow = ({ order, refetch }) => {
           handleDelete={handleDelete}
         />
       </td>
-    </tr>
+    </motion.tr>
   );
 };
 

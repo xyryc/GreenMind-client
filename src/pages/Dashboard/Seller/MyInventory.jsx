@@ -78,15 +78,22 @@ const MyInventory = () => {
                     </th>
                   </tr>
                 </thead>
-                <tbody>
-                  {plants.map((plant) => (
-                    <PlantDataRow
-                      key={plant._id}
-                      refetch={refetch}
-                      plant={plant}
-                    />
-                  ))}
-                </tbody>
+
+                {plants.length === 0 ? (
+                  <div className="text-center font-bold text-gray-800">
+                    No data available
+                  </div>
+                ) : (
+                  <tbody>
+                    {plants.map((plant) => (
+                      <PlantDataRow
+                        key={plant._id}
+                        refetch={refetch}
+                        plant={plant}
+                      />
+                    ))}
+                  </tbody>
+                )}
               </table>
             </div>
           </div>

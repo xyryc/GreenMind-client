@@ -4,6 +4,7 @@ import UpdatePlantModal from "../../Modal/UpdatePlantModal";
 import PropTypes from "prop-types";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import toast from "react-hot-toast";
+import { motion } from "framer-motion";
 
 const PlantDataRow = ({ refetch, plant }) => {
   let [isOpen, setIsOpen] = useState(false);
@@ -33,7 +34,12 @@ const PlantDataRow = ({ refetch, plant }) => {
   };
 
   return (
-    <tr>
+    <motion.tr
+    initial={{ opacity: 0, y: 10 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.3, ease: "easeOut" }}
+    viewport={{ once: true }} // Animate only once when it enters the viewport
+  >
       <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
         <div className="flex items-center">
           <div className="flex-shrink-0">
@@ -93,7 +99,7 @@ const PlantDataRow = ({ refetch, plant }) => {
           setIsEditModalOpen={setIsEditModalOpen}
         />
       </td>
-    </tr>
+    </motion.tr>
   );
 };
 

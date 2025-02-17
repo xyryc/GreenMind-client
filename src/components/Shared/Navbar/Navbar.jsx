@@ -19,6 +19,18 @@ const Navbar = () => {
               GREENMIND
             </Link>
 
+            <div className="space-x-4 hidden sm:block">
+              <Link to="/">Home</Link>
+              <Link to="/plants">Plants</Link>
+
+              {user && (
+                <>
+                  <Link to="/dashboard">Dashboard</Link>
+                  <Link to="/dashboard/profile">Profile</Link>
+                </>
+              )}
+            </div>
+
             {/* Dropdown Menu */}
             <div className="relative">
               <div className="flex flex-row items-center gap-3">

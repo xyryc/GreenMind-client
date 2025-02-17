@@ -9,6 +9,7 @@ const Reviews = () => {
           <h1 className="text-[32px] font-bold w-[40%] 2xl:w-2/6">
             What customers say about GREEMIND?
           </h1>
+
           <img src="icons/vector_dots.png" alt="" />
         </div>
 

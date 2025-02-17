@@ -1,5 +1,4 @@
 import { Helmet } from "react-helmet-async";
-import Plants from "../../components/Home/Plants";
 import Banner from "./Banner";
 import About from "./About";
 import Categories from "./Categories";

@@ -81,15 +81,21 @@ const MyOrders = () => {
                   </tr>
                 </thead>
 
-                <tbody>
-                  {orders?.map((order) => (
-                    <CustomerOrderDataRow
-                      key={order._id}
-                      order={order}
-                      refetch={refetch}
-                    />
-                  ))}
-                </tbody>
+                {orders.length === 0 ? (
+                  <div className="text-center font-bold text-gray-800">
+                    No data available
+                  </div>
+                ) : (
+                  <tbody>
+                    {orders?.map((order) => (
+                      <CustomerOrderDataRow
+                        key={order._id}
+                        order={order}
+                        refetch={refetch}
+                      />
+                    ))}
+                  </tbody>
+                )}
               </table>
             </div>
           </div>

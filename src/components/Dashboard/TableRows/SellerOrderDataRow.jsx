@@ -3,6 +3,7 @@ import { useState } from "react";
 import DeleteModal from "../../Modal/DeleteModal";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import toast from "react-hot-toast";
+import { motion } from "framer-motion";
 
 const SellerOrderDataRow = ({ orderData, refetch }) => {
   const axiosSecure = useAxiosSecure();
@@ -57,7 +58,12 @@ const SellerOrderDataRow = ({ orderData, refetch }) => {
   };
 
   return (
-    <tr>
+    <motion.tr
+    initial={{ opacity: 0, y: 10 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.3, ease: "easeOut" }}
+    viewport={{ once: true }} // Animate only once when it enters the viewport
+  >
       <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
         <p className="text-gray-900 whitespace-no-wrap">{name}</p>
       </td>
@@ -108,7 +114,7 @@ const SellerOrderDataRow = ({ orderData, refetch }) => {
           closeModal={closeModal}
         />
       </td>
-    </tr>
+    </motion.tr>
   );
 };
 
